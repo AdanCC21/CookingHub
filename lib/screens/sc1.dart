@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:testing_1/screens/sc2.dart';
 import 'package:flutter/services.dart';
+import 'dart:io';
 
 
 class chatBot extends StatefulWidget{
@@ -10,6 +12,26 @@ class chatBot extends StatefulWidget{
 
 class _chatBot extends State<chatBot>{
   
+  // Capturar imagen
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _openCamera() async{
+    final XFile? _cameraPhoto = await _picker.pickImage(source: ImageSource.camera);
+    
+    if (_cameraPhoto != null) {
+      // Aquí puedes hacer algo con la foto capturada -----------
+      // print('Imagen capturada: ${photo.path}');
+    }
+  }
+
+  Future<void> _openGalerry() async{
+    final XFile? _galerryPhoto = await _picker.pickImage(source: ImageSource.gallery);
+    if(_galerryPhoto != null){
+      // Lo que haga con la foto adjuntada
+    }
+  }
+
+  // Entrada de texto
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -18,17 +40,12 @@ class _chatBot extends State<chatBot>{
     super.dispose();
   }
 
-  @override 
-  void initState() {
-    super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
-  }
-
   @override
   Widget build(BuildContext context) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Scaffold(
+        home: SafeArea(
+          child: Scaffold(
           body: Stack(
             children: [
               // Fondo
@@ -86,8 +103,17 @@ class _chatBot extends State<chatBot>{
                   child: Row(
                     textDirection: TextDirection.rtl,
                     children: [
-                      IconButton(onPressed:(){}, iconSize: 35,icon: Icon(Icons.add_photo_alternate, color: Colors.white,)),
-                      IconButton(onPressed:(){}, iconSize: 35,icon: Icon(Icons.camera_alt_rounded, color: Colors.white,)),
+                      // Adjuntar
+                      IconButton(onPressed:(){
+                        _openGalerry();
+                      }, iconSize: 
+                      35,
+                      icon: const Icon(Icons.add_photo_alternate, color: Colors.white,)),
+                      // Abrir camara
+                      IconButton(onPressed:(){
+                        _openCamera();}, 
+                      iconSize: 35,
+                      icon: const Icon(Icons.camera_alt_rounded, color: Colors.white,)),
                     ],
                   ),
                 ),
@@ -154,6 +180,7 @@ class _chatBot extends State<chatBot>{
             ],
           ),
         ),
-      );
+      )
+    );
   }
 }
