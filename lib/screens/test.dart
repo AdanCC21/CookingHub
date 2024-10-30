@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class DeslizableScreen extends StatelessWidget {
+  const DeslizableScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Contenedor Deslizable"),
+        title: const Text("Contenedor Deslizable"),
       ),
       body: Stack(
         children: [
-          Center(
+          const Center(
             child: Text("Contenido principal de la pantalla"),
           ),
           DraggableScrollableSheet(
@@ -18,7 +20,7 @@ class DeslizableScreen extends StatelessWidget {
             maxChildSize: 0.9, // Tamaño máximo cuando está deslizado hacia arriba
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.orange,
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(16),
@@ -26,9 +28,9 @@ class DeslizableScreen extends StatelessWidget {
                 ),
                 child: ListView(
                   controller: scrollController,
-                  children: [
+                  children: const [
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(16.0),
                       child: Text(
                         "Arrastra hacia arriba para expandir",
                         style: TextStyle(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ingredientes extends StatefulWidget{
+  const ingredientes({super.key});
+
   @override
   State<StatefulWidget> createState() => _ingredientes();
 }

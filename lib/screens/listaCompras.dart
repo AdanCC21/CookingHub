@@ -41,7 +41,7 @@ class _listaScreen extends State<listaScreen>{
                       IconButton(onPressed: (){}, icon: Image.asset("assets/HotBar/Home.png",width: 30,)),
                       IconButton(onPressed: (){}, icon: Image.asset("assets/HotBar/Games.png",width: 30,)),
                       const SizedBox(width: 60,),
-                      IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => listaScreen()));}, 
+                      IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const listaScreen()));}, 
                       icon: Image.asset("assets/HotBar/Lista.png",width: 30,),),
                       IconButton(onPressed: (){}, icon: Image.asset("assets/HotBar/Perfil.png",width: 30,)),
                     ],
@@ -54,7 +54,7 @@ class _listaScreen extends State<listaScreen>{
                 alignment: Alignment.bottomCenter,
                 child: Positioned(
                   child: IconButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> recetas()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const recetas()));
                   },
                   padding: const EdgeInsets.only(
                     bottom: 2

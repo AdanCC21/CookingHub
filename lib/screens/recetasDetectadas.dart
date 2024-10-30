@@ -50,7 +50,7 @@ class _recetasDetectadas extends State<recetasDetectadas>{
                 InkWell(
                   onTap: (){
                     // ----- Por ahora ira a recetas pero hay que cambiar la ruta
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> recetas()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const recetas()));
                   },
                   child: Container(
                     decoration: const BoxDecoration(
@@ -61,7 +61,7 @@ class _recetasDetectadas extends State<recetasDetectadas>{
                     width: screenWidth*0.8,
                     
                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [Text("Receta1",style: TextStyle(color: Colors.white, 
+                    children: [const Text("Receta1",style: TextStyle(color: Colors.white, 
                     fontFamily: "Poppins", fontSize: 26),),
                     Image.asset("assets/iconos/eat.png",width: 30,)
                     ],),
@@ -69,7 +69,7 @@ class _recetasDetectadas extends State<recetasDetectadas>{
                 ),
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> recetas()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const recetas()));
                   },
                   child: Container(
                     decoration: const BoxDecoration(
@@ -80,7 +80,7 @@ class _recetasDetectadas extends State<recetasDetectadas>{
                     width: screenWidth*0.8,
 
                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [Text("Receta2",style: TextStyle(color: Colors.white, 
+                    children: [const Text("Receta2",style: TextStyle(color: Colors.white, 
                     fontFamily: "Poppins", fontSize: 26),),
                     Image.asset("assets/iconos/eat.png",width: 30,)
                     ],),
@@ -133,7 +133,7 @@ class _recetasDetectadas extends State<recetasDetectadas>{
                   IconButton(onPressed: (){}, icon: Image.asset("assets/HotBar/Home.png",width: 30,)),
                   IconButton(onPressed: (){}, icon: Image.asset("assets/HotBar/Games.png",width: 30,)),
                   const SizedBox(width: 60,),
-                  IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => listaScreen()));}, 
+                  IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const listaScreen()));}, 
                   icon: Image.asset("assets/HotBar/Lista.png",width: 30,),),
                   IconButton(onPressed: (){}, icon: Image.asset("assets/HotBar/Perfil.png",width: 30,)),
                 ],
