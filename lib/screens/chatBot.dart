@@ -234,7 +234,8 @@ class _chatBot extends State<chatBot>{
                   ), 
                   icon: Image.asset("assets/HotBar/Gorrito.png",width: 50,)) ,
                   ),
-              )
+              ),
+              
             ],
           ),
         ),

@@ -1,8 +1,6 @@
 // import 'package:app_1/screens/sc2.dart';
 import 'package:flutter/material.dart';
 import 'package:testing_1/screens/chatBot.dart';
-import 'package:testing_1/screens/recetas.dart';
-import 'package:testing_1/screens/texto.dart';
 
 
 void main(){

@@ -10,6 +10,9 @@ class recetas extends StatefulWidget{
 class _recetas extends State<recetas>{
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return SafeArea(child: Scaffold(
       body: Stack(
         children: [
@@ -52,50 +55,63 @@ class _recetas extends State<recetas>{
               left: 10,
               right: 10
             ),
+            width: double.infinity,
 
             child: Column(
               children: [
                 // --------- Lista superior
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // ---- Chat
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.all(Radius.circular(16))
+                Container(
+                  margin: const EdgeInsets.all(10),
+                  height: screenHeight*0.15,
+
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: FractionallySizedBox(
+                          widthFactor: 0.9,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.all(Radius.circular(16)),
+                            ),
+                            
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> chatBot()));
+                                }, icon: Icon(Icons.chat)),
+                                const Text("Chat")
+                              ],
+                            ),
+                          ),
+                        )
                       ),
-                      width: 140,
-                      height: 100,
-                      margin: const EdgeInsets.all(16),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [IconButton(onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> chatBot()));
-                        } ,icon: const Icon(Icons.chat)),
-                        const Text("Chat"),
-                        ],
+                      Expanded(
+                        child: FractionallySizedBox(
+                          widthFactor: 0.9,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.all(Radius.circular(16)),
+                            ),
+                            
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> chatBot()));
+                                }, icon: Icon(Icons.camera_alt_rounded)),
+                                const Text("Camara")
+                              ],
+                            ),
+                          ),
+                        )
                       ),
-                    ),
-                    // ----- Camara
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.all(Radius.circular(16))
-                      ),
-                      width: 140,
-                      height: 100,
-                      margin: const EdgeInsets.all(16),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [IconButton(onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> chatBot()));
-                        }, icon: Icon(Icons.camera_alt_rounded)),
-                        const Text("Camara")
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
+
                 ),
                 // --------- Favoritos
                 Row(
