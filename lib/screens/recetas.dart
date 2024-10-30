@@ -72,18 +72,19 @@ class _recetas extends State<recetas>{
                           widthFactor: 0.9,
                           child: Container(
                             decoration: const BoxDecoration(
-                              color: Colors.red,
+                              color: Color.fromRGBO(255, 168, 50, 1),
                               borderRadius: BorderRadius.all(Radius.circular(16)),
                             ),
                             
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
+                                children: [
                                 IconButton(onPressed: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=> chatBot()));
-                                }, icon: Icon(Icons.chat)),
-                                const Text("Chat")
+                                }, icon: Image.asset("assets/iconos/camera.png",width: 80,)),
+                                const Text("Camara")
                               ],
+                              
                             ),
                           ),
                         )
@@ -93,7 +94,7 @@ class _recetas extends State<recetas>{
                           widthFactor: 0.9,
                           child: Container(
                             decoration: const BoxDecoration(
-                              color: Colors.red,
+                              color: Color.fromRGBO(255, 168, 50, 1),
                               borderRadius: BorderRadius.all(Radius.circular(16)),
                             ),
                             
@@ -102,9 +103,9 @@ class _recetas extends State<recetas>{
                               children: [
                                 IconButton(onPressed: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=> chatBot()));
-                                }, icon: Icon(Icons.camera_alt_rounded)),
-                                const Text("Camara")
-                              ],
+                                }, icon: Image.asset("assets/iconos/chat.png",width: 80,)),
+                                const Text("Chat"),
+                              ]
                             ),
                           ),
                         )

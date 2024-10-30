@@ -33,7 +33,13 @@ flutter:
     - assets/HotBar/Lista.png
     - assets/HotBar/Perfil.png
     - assets/HotBar/Home.png
+    
     - assets/Background.png
+
+    - assets/chatIcons/camera.png
+    - assets/chatIcons/adjuntar.png
+    - assets/iconos/chat.png
+    - assets/iconos/camera.png
   fonts:
     - family : Poppins
       fonts :

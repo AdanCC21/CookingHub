@@ -107,9 +107,15 @@ class _chatBot extends State<chatBot>{
                   children: [
                     TextField(
                       controller: _controller,
+                      
+                      // Default
                       decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                            borderSide: BorderSide.none      
+                          )
                         ),
                         // -- Cuando presione enter
                         onSubmitted: promp,
@@ -163,12 +169,12 @@ class _chatBot extends State<chatBot>{
                         _openGallery();
                       }, iconSize: 
                       35,
-                      icon: const Icon(Icons.add_photo_alternate, color: Colors.white,)),
+                      icon: Image.asset("assets/chatIcons/adjuntar.png",width: 40,)),
                       // Abrir camara
                       IconButton(onPressed:(){
                         _openCamera();}, 
                       iconSize: 35,
-                      icon: const Icon(Icons.camera_alt_rounded, color: Colors.white,)),
+                      icon: Image.asset("assets/chatIcons/camera.png",width: 40,)),
                     ],
                   ),
                 ),
