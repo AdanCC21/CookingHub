@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:testing_1/screens/listaCompras.dart';
 
 class recetasDetectadas extends StatefulWidget{
+  const recetasDetectadas({super.key});
+
   @override
   State<StatefulWidget> createState() => _recetasDetectadas();
 }
@@ -35,7 +37,7 @@ class _recetasDetectadas extends State<recetasDetectadas>{
 
             width: double.maxFinite,
 
-            child: Column(
+            child: const Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Row(mainAxisAlignment: MainAxisAlignment.center,

@@ -3,6 +3,8 @@ import 'package:testing_1/screens/recetas.dart';
 
 
 class listaScreen extends StatefulWidget{
+  const listaScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => _listaScreen();
 }

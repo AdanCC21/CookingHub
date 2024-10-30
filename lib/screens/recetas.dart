@@ -3,6 +3,8 @@ import 'package:testing_1/screens/listaCompras.dart';
 import 'package:testing_1/screens/chatBot.dart';
 
 class recetas extends StatefulWidget{
+  const recetas({super.key});
+
   @override
   State<StatefulWidget> createState() => _recetas();
 }
@@ -124,9 +126,9 @@ class _recetas extends State<recetas>{
                       borderRadius: BorderRadius.all(Radius.circular(16))
                     ),
 
-                    margin: EdgeInsets.all(16),
+                    margin: const EdgeInsets.all(16),
 
-                    child: Text("Favoritos"),
+                    child: const Text("Favoritos"),
                   )
                  ],
                 ),
@@ -140,9 +142,9 @@ class _recetas extends State<recetas>{
                       borderRadius: BorderRadius.all(Radius.circular(16))
                     ),
 
-                    margin: EdgeInsets.all(16),
+                    margin: const EdgeInsets.all(16),
 
-                    child: Text("Recetas semanales"),
+                    child: const Text("Recetas semanales"),
                   )
                  ],
                 )

@@ -8,6 +8,8 @@ import 'dart:io';
 
 
 class chatBot extends StatefulWidget{
+  const chatBot({super.key});
+
   @override
   State<StatefulWidget> createState() => _chatBot();
 }
@@ -20,11 +22,11 @@ class _chatBot extends State<chatBot>{
 
   Future<void> _openCamera() async{
     final picker = ImagePicker();
-    final image_picker = await picker.pickImage(source: ImageSource.camera);
+    final imagePicker = await picker.pickImage(source: ImageSource.camera);
 
-    if(image_picker != null){
+    if(imagePicker != null){
       setState(() {
-        image_captured = File(image_picker.path);
+        image_captured = File(imagePicker.path);
       });
     }
 
@@ -38,12 +40,12 @@ class _chatBot extends State<chatBot>{
   */
   Future<void> _openGallery() async{
     final picker = ImagePicker();
-    final image_file = await picker.pickImage(source: ImageSource.gallery);
+    final imageFile = await picker.pickImage(source: ImageSource.gallery);
     
-    if(image_file != null){
+    if(imageFile != null){
       // Usamos setState para actualizar el ui de la aplicacion, es decir actualizar o refrescar la imagen
       setState(() {
-        image_captured = File(image_file.path);
+        image_captured = File(imageFile.path);
       });
     }
   }

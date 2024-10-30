@@ -4,7 +4,7 @@ import 'package:testing_1/screens/chatBot.dart';
 
 
 void main(){
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget{
