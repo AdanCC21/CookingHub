@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:testing_1/screens/sc2.dart';
+import 'package:testing_1/screens/listaCompras.dart';
+import 'package:testing_1/screens/recetas.dart';
+import 'package:testing_1/screens/recetasDetectadas.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
 
@@ -12,32 +14,53 @@ class chatBot extends StatefulWidget{
 
 class _chatBot extends State<chatBot>{
   
-  // Capturar imagen
-  final ImagePicker _picker = ImagePicker();
+  // ---- Camara
+  
+  File? image_captured;
 
   Future<void> _openCamera() async{
-    final XFile? _cameraPhoto = await _picker.pickImage(source: ImageSource.camera);
+    final picker = ImagePicker();
+    final image_picker = await picker.pickImage(source: ImageSource.camera);
+
+    if(image_picker != null){
+      setState(() {
+        image_captured = File(image_picker.path);
+      });
+    }
+
+  }
+
+  // ---- Galeria
+  /*
+    Future dice que sera una funcion que tomara tiempo, en este caso tomara tiempo en abrir la galeria y seleccionar una imagen
+    async hace que la funcion sea asincrona, que permite usar el await, que este await permite esperar una respuesta a una operacion que toma tiempo
+    en este caso await espera a que pickImage de respuesta
+  */
+  Future<void> _openGallery() async{
+    final picker = ImagePicker();
+    final image_file = await picker.pickImage(source: ImageSource.gallery);
     
-    if (_cameraPhoto != null) {
-      // Aquí puedes hacer algo con la foto capturada -----------
-      // print('Imagen capturada: ${photo.path}');
+    if(image_file != null){
+      // Usamos setState para actualizar el ui de la aplicacion, es decir actualizar o refrescar la imagen
+      setState(() {
+        image_captured = File(image_file.path);
+      });
     }
   }
 
-  Future<void> _openGalerry() async{
-    final XFile? _galerryPhoto = await _picker.pickImage(source: ImageSource.gallery);
-    if(_galerryPhoto != null){
-      // Lo que haga con la foto adjuntada
-    }
-  }
+  // ---- Texto
 
-  // Entrada de texto
+  // Control de entrada de texto
   final TextEditingController _controller = TextEditingController();
 
-  @override
-  void dispose(){
-    _controller.dispose();
-    super.dispose();
+  String mensaje = '';
+
+  void promp(String texto){
+    setState(() {
+      mensaje = texto;
+      // Limpiamos el cuadro de texto
+      _controller.clear();
+    });
   }
 
   @override
@@ -55,7 +78,8 @@ class _chatBot extends State<chatBot>{
                   fit: BoxFit.cover)
                 ),
               ),
-              // Todo el cuadro de fondo
+              
+              // Cuadro de fondo + Entrada de texto
               Container(
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(226, 151, 50, 1),
@@ -77,6 +101,7 @@ class _chatBot extends State<chatBot>{
                     right: 120
                   ),
 
+                  // -- Cuadro de texto
                   child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -86,10 +111,40 @@ class _chatBot extends State<chatBot>{
                         filled: true,
                         fillColor: Colors.white
                         ),
+                        // -- Cuando presione enter
+                        onSubmitted: promp,
                       ),
                     ],
                   ),
                 )
+              ),
+              
+              // Contenedor del chat --------
+              Container(
+                // ------------- COMENTARIO -------------
+                // Cuando implementen el codigo del chat aqui sera el contenedor donde estara,
+                // quitale el color de fondo por ahora es solo para resaltarlo de los demas
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+
+                ),
+                width: double.maxFinite,
+                margin: const EdgeInsets.only(
+                  top: 110,
+                  left: 10,
+                  right: 10,
+                  bottom: 140
+                ),
+
+                child: Column(
+                  children: [
+                    Text("Aqui ira el chat, Mensaje actual $mensaje"),
+
+                    if(image_captured != null)
+                      Image.file(image_captured!)
+                    
+                  ],
+                ),
               ),
               
               // Iconos de adjuntar y camara
@@ -105,7 +160,7 @@ class _chatBot extends State<chatBot>{
                     children: [
                       // Adjuntar
                       IconButton(onPressed:(){
-                        _openGalerry();
+                        _openGallery();
                       }, iconSize: 
                       35,
                       icon: const Icon(Icons.add_photo_alternate, color: Colors.white,)),
@@ -134,7 +189,8 @@ class _chatBot extends State<chatBot>{
                   ),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text("CookBot",style: TextStyle(color: Colors.white,fontSize: 64,fontFamily: 'Poppins',fontWeight: FontWeight.bold),),],
+                    children: [Text("CookBot",style: TextStyle(color: Colors.white,fontSize: 64,
+                    fontFamily: 'Poppins',fontWeight: FontWeight.bold),),],
                   ),
                 ),
               ),
@@ -170,7 +226,9 @@ class _chatBot extends State<chatBot>{
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Positioned(
-                  child: IconButton(onPressed: (){},
+                  child: IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> recetas()));
+                  },
                   padding: const EdgeInsets.only(
                     bottom: 2
                   ), 
