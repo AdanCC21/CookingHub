@@ -40,6 +40,7 @@ flutter:
     - assets/chatIcons/adjuntar.png
     - assets/iconos/chat.png
     - assets/iconos/camera.png
+    - assets/iconos/eat.png
   fonts:
     - family : Poppins
       fonts :
